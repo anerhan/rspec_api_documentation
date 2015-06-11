@@ -9,7 +9,7 @@ require 'json'
 module RspecApiDocumentation
   extend ActiveSupport::Autoload
 
-  require 'rspec_api_documentation/railtie' if defined?(Rails)
+  require 'rspec_api_documentation/railtie' if defined?(Rails.env)
   include ActiveSupport::JSON
 
   eager_autoload do

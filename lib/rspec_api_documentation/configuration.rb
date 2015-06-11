@@ -52,7 +52,7 @@ module RspecApiDocumentation
     end
 
     add_setting :docs_dir, :default => lambda { |config|
-      if defined?(Rails)
+      if defined?(Rails) && !defined?(Sinatra::Application)
         Rails.root.join("doc", "api")
       else
         Pathname.new("doc/api")
@@ -64,7 +64,7 @@ module RspecApiDocumentation
     add_setting :filter, :default => :all
     add_setting :exclusion_filter, :default => nil
     add_setting :app, :default => lambda { |config|
-      if defined?(Rails)
+      if defined?(Rails) && !defined?(Sinatra::Application)
         Rails.application
       else
         nil

@@ -9,7 +9,7 @@ require 'json'
 module RspecApiDocumentation
   extend ActiveSupport::Autoload
 
-  require 'rspec_api_documentation/railtie' if defined?(Rails.env)
+  require 'rspec_api_documentation/railtie' if defined?(Rails) && !defined?(Sinatra::Application)
   include ActiveSupport::JSON
 
   eager_autoload do
